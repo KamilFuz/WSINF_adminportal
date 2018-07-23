@@ -1,4 +1,4 @@
-package com.adminportal.domain.security;
+package com.adminportal.domain;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,6 +23,7 @@ public class Product {
     private boolean active=true;
     private int inStockNumber;
 
+    @Transient
     private MultipartFile productImage;
 
     public Long getId() {

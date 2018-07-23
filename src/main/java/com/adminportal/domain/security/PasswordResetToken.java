@@ -2,6 +2,7 @@ package com.adminportal.domain.security;
 
 import com.adminportal.domain.User;
 
+import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;
 
