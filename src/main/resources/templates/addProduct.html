@@ -11,33 +11,38 @@
     <div class="row">
         <form class="form-horizontal" th:action="@{/product/add}" method="post" enctype="multipart/form-data">
             <fieldset>
-                <legend class="center-block">Dodaj nowy produkt.</legend>
-                <span style="font-size:small">Pole oznaczone * jest wymagane. </span>
+                <legend class="center-block">Dodaj nowy produkt.<span style="font-size:small"> Pole oznaczone * jest wymagane. </span>
+                </legend>
+
 
                 <!-- name -->
                 <div class="form-group">
-                    <label for="name">* Nazwa produktu</label>
-                    <input
-                            type="text" class="form-control" name="name" id="name" th:value="${product.name}"
-                            required="required"
-                            placeholder="Nazwa produktu"/>
-                    <span class="help-block">Nazwa dla produktu</span>
+                    <label class="col-md-2 control-label" for="name">* Nazwa produktu</label>
+                    <div class="col-md-8">
+                        <input
+                                type="text" class="form-control" name="name" id="name" th:value="${product.name}"
+                                required="required"
+                                placeholder="Nazwa produktu"/>
+                        <span class="help-block">Nazwa dla produktu</span>
+                    </div>
                 </div>
 
                 <!-- producer -->
                 <div class="form-group">
-                    <label for="producer">* Producent</label>
-                    <input
-                            type="text" class="form-control" name="producer" id="producer"
-                            th:value="${product.producer}" required="required"
-                            placeholder="Producent"/>
-                    <span class="help-block">Producent dla produktu</span>
+                    <label class="col-md-2 control-label" for="producer">* Producent</label>
+                    <div class="col-md-8">
+                        <input
+                                type="text" class="form-control" name="producer" id="producer"
+                                th:value="${product.producer}" required="required"
+                                placeholder="Producent"/>
+                        <span class="help-block">Producent dla produktu</span>
+                    </div>
                 </div>
 
                 <!-- category -->
                 <div class="form-group">
-                    <label class="col-xs-2 control-label" for="category">* Kategoria</label>
-                    <div class="col-xs-8">
+                    <label class="col-md-2 control-label" for="category">* Kategoria</label>
+                    <div class="col-md-8">
                         <select th:value="${product.category}" id="category" name="category" class="form-control">
                             <option value="" selected="selected" disabled="disabled">Wybierz kategorię</option>
                             <option value="Kamery" th:selected="(${product.category}=='Kamery')">Kamery</option>
@@ -56,8 +61,8 @@
 
                 <!-- list price -->
                 <div class="form-group">
-                    <label class="col-xs-2 control-label" for="listprice">Cena katalogowa</label>
-                    <div class="col-xs-8">
+                    <label class="col-md-2 control-label" for="listprice">Cena katalogowa</label>
+                    <div class="col-md-8">
                         <div class="input-group">
                             <span class="input-group-addon">PLN</span>
                             <input th:value="${product.listprice}" type="number" name="listprice" class="form-control"
@@ -69,8 +74,8 @@
 
                 <!-- our price -->
                 <div class="form-group">
-                    <label class="col-xs-2 control-label" for="ourprice">Cena sklepowa</label>
-                    <div class="col-xs-8">
+                    <label class="col-md-2 control-label" for="ourprice">Cena sklepowa</label>
+                    <div class="col-md-8">
                         <div class="input-group">
                             <span class="input-group-addon">PLN</span>
                             <input th:value="${product.ourprice}" type="number" name="ourprice" class="form-control"
@@ -82,8 +87,8 @@
 
                 <!-- in stock number -->
                 <div class="form-group">
-                    <label class="col-xs-2 control-label" for="inStockNumber">Ilość w magazynie</label>
-                    <div class="col-xs-8">
+                    <label class="col-md-2 control-label" for="inStockNumber">Ilość w magazynie</label>
+                    <div class="col-md-8">
                         <div class="input-group">
                             <input th:value="${product.inStockNumber}" name="ourprice" type="number"
                                    class="form-control" id="inStockNumber" placeholder="Ilość w magazynie"/>
@@ -95,15 +100,15 @@
 
                 <!-- status of product -->
                 <div class="form-group">
-                    <label class="col-xs-2 control-label" for="active">Dostępność</label>
-                    <div class="col-xs-8">
+                    <label class="col-md-2 control-label" for="active">Dostępność</label>
+                    <div class="col-md-8">
                         <div class="input-group">
                             <label>
-                                <input value="true" name="active" type="radio" class="form-control" id="active"/>
+                                <input value="true" name="active" type="radio" checked="checked"/>
                                 Dostępny
                             </label>
                             <label>
-                                <input value="false" name="active" type="radio" class="form-control" id="active"/>
+                                <input value="false" name="active" type="radio"/>
                                 Niedostępny
                             </label>
                             <span class="help-block">Dostępność towaru do sprzedaży</span>
@@ -113,25 +118,25 @@
 
                 <!-- description -->
                 <div class="form-group">
-                    <label for="description">* Opis</label>
+                    <label class="col-md-2 control-label" for="description">* Opis</label>
+                    <div class="col-md-8">
                     <textarea rows="5" class="form-control" name="description" id="description"
                               th:value="${product.description}" required="required" placeholder="Opis"></textarea>
-                    <span class="help-block">Opis produktu</span>
+                        <span class="help-block">Opis produktu</span>
+                    </div>
                 </div>
 
                 <!--upload image-->
                 <div class="form-group">
-                    <div class="col-xs-2">
-                        <label for="productImage">Zdjęcie produktu</label>
-                    </div>
-                    <div class="col-xs-8">
+                    <label class="col-md-2 control-label" for="productImage">Zdjęcie produktu</label>
+                    <div class="col-md-8">
                         <input id="productImage" type="file" name="productImage" th:value="${product.productImage}"/>
                     </div>
                 </div>
 
                 <div class="form-group">
 
-                    <button type="submit" class="btn btn-default">Dodaj product</button>
+                    <button type="submit" class="btn btn-default">Dodaj produkt</button>
                     <a class="btn btn-danger" th:href="@{/}">Anuluj</a>
 
                 </div>
