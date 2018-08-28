@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="common/header :: common-header" />
+
+<body>
+
+<div th:replace="common/header :: navbar" />
+
+<div class="container">
+    <div class="row">
+        <form class="form-horizontal" th:action="@{/product/add}" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend class="center-block">Dodaj nowy produkt. </legend><span style="font-size:small">Pole oznaczone * jest wymagane. </span>
+
+                <!-- name -->
+                <div class="form-group">
+                    <label for="name">* Nazwa produktu</label>
+                    <input
+                            type="text" class="form-control" id="name" th:value="${product.name}" required="required"
+                            placeholder="Nazwa produktu" />
+                    <span class="help-block">Nazwa dla produktu</span>
+                </div>
+
+                <!-- producer -->
+                <div class="form-group">
+                    <label for="producer">* Producent</label>
+                    <input
+                            type="text" class="form-control" id="producer" th:value="${product.producer}" required="required"
+                            placeholder="Producent" />
+                    <span class="help-block">Producent dla produktu</span>
+                </div>
+
+                <!-- category -->
+                <div class="form-group">
+                    <label class="col-xs-2 control-label" for="category">* Kategoria</label>
+                    <div class="col-xs-8">
+                        <select th:value="${product.category}" id="category" class="form-control">
+                            <option value="" selected="selected" disabled="disabled">Wybierz kategorię</option>
+                            <option value="Kamery" th:selected="(${product.category}=='Kamery')">Kamery</option>
+                            <option value="Rejestratory" th:selected="(${product.category}=='Rejestratory')">Rejestratory</option>
+                            <option value="Akcesoria" th:selected="(${product.category}=='Akcesoria')">Akcesoria</option>
+                            <option value="Domofony" th:selected="(${product.category}=='Domofony')">Domofony</option>
+                            <option value="Noktowizja" th:selected="(${product.category}=='Noktowizja')">Noktowizja</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-default">Zapisz</button>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<div th:replace="common/footer :: footer" />
+</body>
+</html>
