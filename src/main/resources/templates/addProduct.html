@@ -61,12 +61,12 @@
 
                 <!-- list price -->
                 <div class="form-group">
-                    <label class="col-md-2 control-label" for="listprice">Cena katalogowa</label>
+                    <label class="col-md-2 control-label" for="listPrice">Cena katalogowa</label>
                     <div class="col-md-8">
                         <div class="input-group">
                             <span class="input-group-addon">PLN</span>
-                            <input th:value="${product.listprice}" type="number" name="listprice" class="form-control"
-                                   id="listprice" placeholder="Cena katalogowa"/>
+                            <input th:value="${product.listPrice}" type="number" name="listPrice" class="form-control"
+                                   id="listPrice" placeholder="Cena katalogowa"/>
                         </div>
                         <span class="help-block">Cena katalogowa za produkt</span>
                     </div>
@@ -74,12 +74,12 @@
 
                 <!-- our price -->
                 <div class="form-group">
-                    <label class="col-md-2 control-label" for="ourprice">Cena sklepowa</label>
+                    <label class="col-md-2 control-label" for="ourPrice">Cena sklepowa</label>
                     <div class="col-md-8">
                         <div class="input-group">
                             <span class="input-group-addon">PLN</span>
-                            <input th:value="${product.ourprice}" type="number" name="ourprice" class="form-control"
-                                   id="ourprice" placeholder="Cena sklepowa"/>
+                            <input th:value="${product.ourPrice}" type="number" name="ourPrice" class="form-control"
+                                   id="ourPrice" placeholder="Cena sklepowa"/>
                         </div>
                         <span class="help-block">Cena sklepowa za produkt</span>
                     </div>
@@ -90,7 +90,7 @@
                     <label class="col-md-2 control-label" for="inStockNumber">Ilość w magazynie</label>
                     <div class="col-md-8">
                         <div class="input-group">
-                            <input th:value="${product.inStockNumber}" name="ourprice" type="number"
+                            <input th:value="${product.inStockNumber}" name="inStockNumber" type="number"
                                    class="form-control" id="inStockNumber" placeholder="Ilość w magazynie"/>
                             <span class="help-block">Liczba danego produktu w magazynie</span>
                         </div>
