@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.List;
 
 @Controller
 @RequestMapping("/product")
@@ -52,7 +53,8 @@ public class ProductController {
 
     @RequestMapping("/productList")
     public String productList(Model model){
-//        List<Product> productList = productService.findAll();
+        List<Product> productList = productService.findAll();
+        model.addAttribute("productList", productList);
         return "productList";
     }
 }
