@@ -19,6 +19,7 @@
                     <th>Cena katalogowa</th>
                     <th>Cena sklepowa</th>
                     <th>Ilość w magazynie</th>
+                    <th>Waga</th>
                     <th>Dostępność</th>
                     <th>Akcja</th>
                 </tr>
@@ -33,6 +34,7 @@
                     <td th:text="${product.listPrice}"></td>
                     <td th:text="${product.ourPrice}"></td>
                     <td th:text="${product.inStockNumber}"></td>
+                    <td th:text="${product.shippingWeight}"></td>
                     <td th:text="${product.active}"></td>
                     <td>delete</td>
                 </tr>

@@ -85,6 +85,20 @@
                     </div>
                 </div>
 
+                <!-- shipping weight -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="shippingWeight">Waga</label>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <input th:value="${product.shippingWeight}" type="number"
+                                   name="shippingWeight" class="form-control" id="shippingWeight"
+                                   placeholder="Waga" /> <span
+                                class="input-group-addon">kg</span>
+                        </div>
+                        <span class="help-block">Waga produktu</span>
+                    </div>
+                </div>
+
                 <!-- in stock number -->
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="inStockNumber">Ilość w magazynie</label>

@@ -19,6 +19,7 @@ public class Product {
 
     private double listPrice;
     private double ourPrice;
+    private double shippingWeight;
 
     private boolean active=true;
     private int inStockNumber;
@@ -104,6 +105,14 @@ public class Product {
 
     public void setProductImage(MultipartFile productImage) {
         this.productImage = productImage;
+    }
+
+    public double getShippingWeight() {
+        return shippingWeight;
+    }
+
+    public void setShippingWeight(double shippingWeight) {
+        this.shippingWeight = shippingWeight;
     }
 
     //    public Long getId() {
