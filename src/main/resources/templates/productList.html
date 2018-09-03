@@ -12,9 +12,10 @@
         <table id="productListTable" class="table table-bordered table-hover table-striped">
             <thead>
                 <tr>
+                    <th>Numer produktu</th>
                     <th>Nazwa produktu</th>
                     <th>Producent</th>
-                    <th>Categoria</th>
+                    <th>Kategoria</th>
                     <th>Cena katalogowa</th>
                     <th>Cena sklepowa</th>
                     <th>Ilość w magazynie</th>
@@ -25,6 +26,7 @@
             <tbody>
                 <tr data-th-each="product : ${productList}">
                     <!--<td><input hidden="hidden" name="id" th:value="${product.id}" /></td>-->
+                    <td th:text="${product.id}"></td>
                     <td th:text="${product.name}"></td>
                     <td th:text="${product.producer}"></td>
                     <td th:text="${product.category}"></td>

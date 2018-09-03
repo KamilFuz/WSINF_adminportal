@@ -23,8 +23,8 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @RequestMapping(value="/add", method = RequestMethod.GET)
-    public String addProduct(Model model){
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String addProduct(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
         return "addProduct";
@@ -50,9 +50,8 @@ public class ProductController {
         return "redirect:productList";
     }
 
-
     @RequestMapping("/productList")
-    public String productList(Model model){
+    public String productList(Model model) {
         List<Product> productList = productService.findAll();
         model.addAttribute("productList", productList);
         return "productList";
