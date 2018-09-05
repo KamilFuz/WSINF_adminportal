@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="common/header :: common-header"/>
+
+<body>
+
+<div th:replace="common/header :: navbar"/>
+
+<div class="container">
+    <div>
+        <ol class="breadcrumb">
+            <li><a th:href="@{/product/productList}"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Powrót</li>
+            <li><a th:href="@{/product/updateproduct?id=}+${product.id}">Edytuj</a></li>
+        </ol>
+
+    </div>
+
+    <div class="row">
+        <div class="col-xs-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <img th:src="@{/image/product/}+${product.id}+'.png'" class="img-responsive"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9">
+            <h3 th:text="${product.name}"></h3>
+            <div class="row">
+                <div class="col-xs-6">
+                    <p><strong>Producent: </strong><span th:text="${product.producer}"></span></p>
+                    <p><strong>Numer produktu: </strong><span th:text="${product.id}"></span></p>
+                    <p><strong>Category: </strong><span th:text="${product.category}"></span></p>
+                </div>
+                <div class="col-xs-6">
+                    <p><strong>Cena katalogowa: </strong><span th:text="${product.listPrice}"></span></p>
+                    <p><strong>Cena sklepowa: </strong><span th:text="${product.ourPrice}"></span></p>
+                    <p><strong>Waga: </strong><span th:text="${product.shippingWeight}"></span></p>
+                    <p><strong>Ilość na stanie: </strong><span th:text="${product.inStockNumber}"></span></p>
+                </div>
+            </div>
+
+            <p><Strong>Opis: </Strong><span th:text="${product.description}"></span></p>
+        </div>
+
+    </div>
+</div>
+
+<div th:replace="common/footer :: footer"/>
+</body>
+</html>
