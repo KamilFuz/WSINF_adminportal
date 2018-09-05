@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.websocket.server.PathParam;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -55,5 +56,25 @@ public class ProductController {
         List<Product> productList = productService.findAll();
         model.addAttribute("productList", productList);
         return "productList";
+    }
+
+    @RequestMapping("/productInfo")
+    public String productInfo(
+            @PathParam("id") Long id, Model model
+    ){
+        productService.findById(id).ifPresent(product -> model.addAttribute("product", product));
+
+        return "productInfo";
+
+    }
+
+    @RequestMapping("/updateProduct")
+    public String updateProduct(
+            @PathParam("id") Long id, Model model
+    ){
+        productService.findById(id).ifPresent(product -> model.addAttribute("product", product));
+
+        return "updateProduct";
+
     }
 }

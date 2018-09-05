@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="common/header :: common-header"/>
+
+<body>
+
+<div th:replace="common/header :: navbar"/>
+
+<div class="container">
+    <div class="row">
+        <form class="form-horizontal" th:action="@{/product/updateProduct}" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend class="center-block">Edytuj produkt.<span style="font-size:small"> Pole oznaczone * jest wymagane. </span>
+                </legend>
+
+
+                <!-- name -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="name">* Nazwa produktu</label>
+                    <div class="col-md-8">
+                        <input
+                                type="text" class="form-control" name="name" id="name" th:value="${product.name}"
+                                required="required"
+                                placeholder="Nazwa produktu"/>
+                        <span class="help-block">Nazwa dla produktu</span>
+                    </div>
+                </div>
+
+                <!-- producer -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="producer">* Producent</label>
+                    <div class="col-md-8">
+                        <input
+                                type="text" class="form-control" name="producer" id="producer"
+                                th:value="${product.producer}" required="required"
+                                placeholder="Producent"/>
+                        <span class="help-block">Producent dla produktu</span>
+                    </div>
+                </div>
+
+                <!-- category -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="category">* Kategoria</label>
+                    <div class="col-md-8">
+                        <select th:value="${product.category}" id="category" name="category" class="form-control">
+                            <option value="" selected="selected" disabled="disabled">Wybierz kategorię</option>
+                            <option value="Kamery" th:selected="(${product.category}=='Kamery')">Kamery</option>
+                            <option value="Rejestratory" th:selected="(${product.category}=='Rejestratory')">
+                                Rejestratory
+                            </option>
+                            <option value="Akcesoria" th:selected="(${product.category}=='Akcesoria')">Akcesoria
+                            </option>
+                            <option value="Domofony" th:selected="(${product.category}=='Domofony')">Domofony</option>
+                            <option value="Noktowizja" th:selected="(${product.category}=='Noktowizja')">Noktowizja
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <!-- list price -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="listPrice">Cena katalogowa</label>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <span class="input-group-addon">PLN</span>
+                            <input th:value="${product.listPrice}" type="number" name="listPrice" class="form-control"
+                                   id="listPrice" placeholder="Cena katalogowa"/>
+                        </div>
+                        <span class="help-block">Cena katalogowa za produkt</span>
+                    </div>
+                </div>
+
+                <!-- our price -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="ourPrice">Cena sklepowa</label>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <span class="input-group-addon">PLN</span>
+                            <input th:value="${product.ourPrice}" type="number" name="ourPrice" class="form-control"
+                                   id="ourPrice" placeholder="Cena sklepowa"/>
+                        </div>
+                        <span class="help-block">Cena sklepowa za produkt</span>
+                    </div>
+                </div>
+
+                <!-- shipping weight -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="shippingWeight">Waga</label>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <input th:value="${product.shippingWeight}" type="number"
+                                   name="shippingWeight" class="form-control" id="shippingWeight"
+                                   placeholder="Waga" /> <span
+                                class="input-group-addon">kg</span>
+                        </div>
+                        <span class="help-block">Waga produktu</span>
+                    </div>
+                </div>
+
+                <!-- in stock number -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="inStockNumber">Ilość w magazynie</label>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <input th:value="${product.inStockNumber}" name="inStockNumber" type="number"
+                                   class="form-control" id="inStockNumber" placeholder="Ilość w magazynie"/>
+                            <span class="help-block">Liczba danego produktu w magazynie</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- status of product -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="active">Dostępność</label>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <label>
+                                <input value="true" name="active" type="radio" checked="checked"/>
+                                Dostępny
+                            </label>
+                            <label>
+                                <input value="false" name="active" type="radio"/>
+                                Niedostępny
+                            </label>
+                            <span class="help-block">Dostępność towaru do sprzedaży</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- description -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="description">* Opis</label>
+                    <div class="col-md-8">
+                    <textarea rows="5" class="form-control" name="description" id="description"
+                              th:value="${product.description}" th:text="${product.description}" required="required" placeholder="Opis"></textarea>
+                        <span class="help-block">Opis produktu</span>
+                    </div>
+                </div>
+
+                <!--upload image-->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="productImage">Zdjęcie produktu</label>
+                    <div class="col-md-8">
+                        <input id="productImage" type="file" name="productImage" th:value="${product.productImage}"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <button type="submit" class="btn btn-success">Edytuj produkt</button>
+                    <a class="btn btn-danger" th:href="@{/product/productInfo(id=${product.id})}">Anuluj</a>
+
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<div th:replace="common/footer :: footer"/>
+</body>
+</html>

@@ -28,7 +28,7 @@
                 <tr data-th-each="product : ${productList}">
                     <!--<td><input hidden="hidden" name="id" th:value="${product.id}" /></td>-->
                     <td th:text="${product.id}"></td>
-                    <td th:text="${product.name}"></td>
+                    <td> <a th:href="@{/product/productInfo(id=${product.id})}"><span th:text="${product.name}"></span></a></td>
                     <td th:text="${product.producer}"></td>
                     <td th:text="${product.category}"></td>
                     <td th:text="${product.listPrice}"></td>
