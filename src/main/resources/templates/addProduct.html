@@ -65,7 +65,7 @@
                     <div class="col-md-8">
                         <div class="input-group">
                             <span class="input-group-addon">PLN</span>
-                            <input th:value="${product.listPrice}" type="number" name="listPrice" class="form-control"
+                            <input th:value="${product.listPrice}" type="number" step="0.01" name="listPrice" class="form-control"
                                    id="listPrice" placeholder="Cena katalogowa"/>
                         </div>
                         <span class="help-block">Cena katalogowa za produkt</span>
@@ -78,7 +78,7 @@
                     <div class="col-md-8">
                         <div class="input-group">
                             <span class="input-group-addon">PLN</span>
-                            <input th:value="${product.ourPrice}" type="number" name="ourPrice" class="form-control"
+                            <input th:value="${product.ourPrice}" type="number" step="0.01" name="ourPrice" class="form-control"
                                    id="ourPrice" placeholder="Cena sklepowa"/>
                         </div>
                         <span class="help-block">Cena sklepowa za produkt</span>
@@ -90,7 +90,7 @@
                     <label class="col-md-2 control-label" for="shippingWeight">Waga</label>
                     <div class="col-md-8">
                         <div class="input-group">
-                            <input th:value="${product.shippingWeight}" type="number"
+                            <input th:value="${product.shippingWeight}" type="number" step="0.001"
                                    name="shippingWeight" class="form-control" id="shippingWeight"
                                    placeholder="Waga" /> <span
                                 class="input-group-addon">kg</span>

@@ -15,6 +15,8 @@ import javax.websocket.server.PathParam;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Controller
@@ -61,7 +63,7 @@ public class ProductController {
     @RequestMapping("/productInfo")
     public String productInfo(
             @PathParam("id") Long id, Model model
-    ){
+    ) {
         productService.findById(id).ifPresent(product -> model.addAttribute("product", product));
 
         return "productInfo";
@@ -71,10 +73,35 @@ public class ProductController {
     @RequestMapping("/updateProduct")
     public String updateProduct(
             @PathParam("id") Long id, Model model
-    ){
+    ) {
         productService.findById(id).ifPresent(product -> model.addAttribute("product", product));
 
         return "updateProduct";
 
+    }
+
+    @RequestMapping(value = "/updateProduct", method = RequestMethod.POST)
+    public String updateProductPost(@ModelAttribute("product") Product product, HttpServletRequest request) {
+        productService.save(product);
+
+        MultipartFile productImage = product.getProductImage();
+
+        if (!productImage.isEmpty()) {
+            try {
+                byte[] bytes = productImage.getBytes();
+                String name = product.getId() + ".png";
+
+                Files.delete(Paths.get("src/main/resources/static/image/product/" + name));
+
+                BufferedOutputStream stream = new BufferedOutputStream(
+                        new FileOutputStream(new File("src/main/resources/static/image/product/" + name)));
+                stream.write(bytes);
+                stream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return "redirect:/product/productInfo?id=" + product.getId();
     }
 }
