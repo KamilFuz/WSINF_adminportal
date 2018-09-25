@@ -1,8 +1,10 @@
 package com.adminportal.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Product {
@@ -21,11 +23,23 @@ public class Product {
     private double ourPrice;
     private double shippingWeight;
 
+    public double getShippingWeight() {
+        return shippingWeight;
+    }
+
+    public void setShippingWeight(double shippingWeight) {
+        this.shippingWeight = shippingWeight;
+    }
+
     private boolean active=true;
     private int inStockNumber;
 
     @Transient
     private MultipartFile productImage;
+
+    @OneToMany(mappedBy = "product")
+    @JsonIgnore
+    private List<ProductToCartItem> productToCartItemList;
 
     public Long getId() {
         return id;
@@ -107,12 +121,12 @@ public class Product {
         this.productImage = productImage;
     }
 
-    public double getShippingWeight() {
-        return shippingWeight;
+    public List<ProductToCartItem> getProductToCartItemList() {
+        return productToCartItemList;
     }
 
-    public void setShippingWeight(double shippingWeight) {
-        this.shippingWeight = shippingWeight;
+    public void setProductToCartItemList(List<ProductToCartItem> productToCartItemList) {
+        this.productToCartItemList = productToCartItemList;
     }
 
     //    public Long getId() {

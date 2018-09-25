@@ -135,8 +135,7 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="description">* Opis</label>
                     <div class="col-md-8">
-                    <textarea rows="5" class="form-control" name="description" id="description"
-                              th:value="${product.description}" th:text="${product.description}" required="required" placeholder="Opis"></textarea>
+                    <textarea rows="5" class="form-control" id="description" th:value="${product.description}" th:text="${product.description}" required="required" placeholder="Opis" />
                         <span class="help-block">Opis produktu</span>
                     </div>
                 </div>
