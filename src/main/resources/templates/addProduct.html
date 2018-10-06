@@ -106,7 +106,7 @@
                         <div class="input-group">
                             <input th:value="${product.inStockNumber}" name="inStockNumber" type="number"
                                    class="form-control" id="inStockNumber" placeholder="Ilość w magazynie"/>
-                            <span class="help-block">Liczba danego produktu w magazynie</span>
+                            <span class="help-block">Ilość danego produktu w magazynie</span>
                         </div>
                     </div>
                 </div>
@@ -135,12 +135,15 @@
                     <label class="col-md-2 control-label" for="description">* Opis</label>
                     <div class="col-md-8">
                     <textarea rows="5" class="form-control" name="description" id="description"
-                              th:value="${product.description}" required="required" placeholder="Opis"></textarea>
+                              th:value="${product.description}" placeholder="Opis"></textarea>
+                              <!--COS KRZACZY REQUIRED W TEXT AREA-->
+                              <!--required="required" -->
+
                         <span class="help-block">Opis produktu</span>
                     </div>
                 </div>
 
-                <!--upload image-->
+                upload image
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="productImage">Zdjęcie produktu</label>
                     <div class="col-md-8">
@@ -149,10 +152,11 @@
                 </div>
 
                 <div class="form-group">
-
-                    <button type="submit" class="btn btn-success">Dodaj produkt</button>
-                    <a class="btn btn-danger" th:href="@{/}">Anuluj</a>
-
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <button type="submit" class="btn btn-success">Dodaj produkt</button>
+                        <a class="btn btn-danger" th:href="@{/}">Anuluj</a>
+                    </div>
                 </div>
             </fieldset>
         </form>
