@@ -12,6 +12,7 @@
         <table id="productListTable" class="table table-bordered table-hover table-striped">
             <thead>
             <tr>
+                <th><input th:id="selectAllProducts" type="checkbox"/></th>
                 <th>Numer produktu</th>
                 <th>Nazwa produktu</th>
                 <th>Producent</th>
@@ -26,7 +27,9 @@
             </thead>
             <tbody>
             <tr data-th-each="product : ${productList}">
-                <!--<td><input hidden="hidden" name="id" th:value="${product.id}" /></td>-->
+                <td>
+                    <input hidden="hidden" name="id" th:value="${product.id}"/>
+                    <input th:id="'selected'+${product.id}" class="checkboxProduct" type="checkbox"/></td>
                 <td th:text="${product.id}"></td>
                 <td><a th:href="@{/product/productInfo(id=${product.id})}"><span th:text="${product.name}"></span></a>
                 </td>
@@ -37,12 +40,17 @@
                 <td th:text="${product.inStockNumber}"></td>
                 <td th:text="${product.shippingWeight}"></td>
                 <td th:text="${product.active}"></td>
-                <td>delete</td>
+                <td>
+                    <input hidden="hidden" name="id" th:value="${product.id}"/>
+                    <button th:id="oneProduct-+${product.id}" class="btn btn-danger btn-xs delete-product" type="submit"
+                            value="delete">
+                        <span class="fa fa-times"></span></button>
+                </td>
             </tr>
             </tbody>
         </table>
     </div>
-
+    <button th:id="deleteSelected" class="btn btn-danger "></button>
 </div>
 
 <div th:replace="common/footer :: footer"/>
@@ -51,7 +59,7 @@
 <script>
     $(document).ready(function () {
         $('#productListTable').DataTable({
-            "lengthMenu": [ [5,10,15,20,-1] , [5,10,15,20,"ALL"] ],
+            "lengthMenu": [ [5, 10, 15, 20, -1] , [5, 10, 15, 20, "ALL"] ],
             "ordering": false,
             stateSave: true
         })
