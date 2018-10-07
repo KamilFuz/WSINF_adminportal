@@ -119,11 +119,11 @@
                     <div class="col-md-8">
                         <div class="input-group">
                             <label>
-                                <input value="true" name="active" type="radio" checked="checked"/>
+                                <input value="true" name="active" type="radio" th:checked="${product.active}"/>
                                 Dostępny
                             </label>
                             <label>
-                                <input value="false" name="active" type="radio"/>
+                                <input value="false" name="active" type="radio" th:checked="${!product.active}"/>
                                 Niedostępny
                             </label>
                             <span class="help-block">Dostępność towaru do sprzedaży</span>
@@ -135,7 +135,7 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="description">* Opis</label>
                     <div class="col-md-8">
-                    <textarea rows="5" class="form-control" id="description" th:value="${product.description}" th:text="${product.description}" required="required" placeholder="Opis" />
+                    <textarea rows="5" class="form-control" id="description" th:value="${product.description}" th:text="${product.description}" placeholder="Opis" />
                         <span class="help-block">Opis produktu</span>
                     </div>
                 </div>
