@@ -104,4 +104,15 @@ public class ProductController {
 
         return "redirect:/product/productInfo?id=" + product.getId();
     }
+
+    @RequestMapping(value="/remove", method=RequestMethod.POST)
+    public String remove(
+            @ModelAttribute("id") String id, Model model
+    ) {
+        productService.removeOne(Long.parseLong(id.substring(11)));
+        List<Product> productList = productService.findAll();
+        model.addAttribute("productList", productList);
+
+        return "redirect:/product/productList";
+    }
 }

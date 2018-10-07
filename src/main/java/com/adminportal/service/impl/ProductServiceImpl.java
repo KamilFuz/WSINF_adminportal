@@ -27,4 +27,6 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findById(id);
     }
 
+    public void removeOne(Long id){productRepository.deleteById(id);}
+
 }
